@@ -15,6 +15,8 @@ const CreateProduct = ({setAddProductModal}) => {
   const [loading, setLoading] = useState(false);
 
 const { Productfetch } = useContext(contextProvider);
+
+const url = import.meta.env?.VITE_BACKEND_URL
   
 
   const uploadImage = async (pics) => {
@@ -63,7 +65,7 @@ const { Productfetch } = useContext(contextProvider);
     }
 
     try {
-      await axios.post("http://localhost:8080/api/product", {
+      await axios.post(`${url}/api/product`, {
         productName,
         productImage: imageUrl,
         onSale,

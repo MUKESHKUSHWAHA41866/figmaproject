@@ -10,6 +10,7 @@ const CreateService = ({ selectedService, setAddServiceModal,setSelectedService 
   const [loading, setLoading] = useState(false);
   const [updateRequest, setUpdateRequest] = useState(false);
   const {user,Servicefetch} = useContext(contextProvider);
+  const url = import.meta.env?.VITE_BACKEND_URL
 
   console.log("SELECTED",selectedService)
  
@@ -76,7 +77,7 @@ const CreateService = ({ selectedService, setAddServiceModal,setSelectedService 
     try {
       if (updateRequest) {
         // Update service
-        await axios.put(`http://localhost:8080/api/service/${selectedService._id}`, {
+        await axios.put(`${url}/api/service/${selectedService._id}`, {
           serviceName,
           servicePic: imageUrl,
         });
@@ -86,7 +87,7 @@ const CreateService = ({ selectedService, setAddServiceModal,setSelectedService 
         
       } else {
         // Create new service
-        await axios.post("http://localhost:8080/api/service", {
+        await axios.post(`${url}/api/service`, {
           serviceName,
           servicePic: imageUrl,
         });

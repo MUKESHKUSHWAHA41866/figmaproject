@@ -9,9 +9,10 @@ const AppContext = ({children}) => {
       email:"",
       isAdmin:false
     })
+    const url = import.meta.env?.VITE_BACKEND_URL
     const Servicefetch=async()=>{
         try {
-            const response=await axios.get("http://localhost:8080/api/service");
+            const response=await axios.get(`${url}/api/service`);
             if(response){
                 setServices(response?.data?.data);
             }
@@ -23,7 +24,7 @@ const AppContext = ({children}) => {
 
     const Productfetch=async()=>{
       try {
-          const response=await axios.get("http://localhost:8080/api/product");
+          const response=await axios.get(`${url}/api/product`);
           if(response){
 
             console.log("API",response.data);

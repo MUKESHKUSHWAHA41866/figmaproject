@@ -24,7 +24,7 @@ const Services = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:8080/api/service/${id}`);
+      const response = await axios.delete(`${url}/api/service/${id}`);
       if (response) {
         toast.success("Service deleted");
         Servicefetch();

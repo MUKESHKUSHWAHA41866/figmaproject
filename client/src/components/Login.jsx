@@ -12,12 +12,13 @@ const Login = () => {
 
   const {setUser} = useContext(contextProvider);
   const navigate=useNavigate(); 
+  const url = import.meta.env?.VITE_BACKEND_URL
  
   const handleSubmit =async (e) => {
     e.preventDefault();
     console.log(auth);
     try {
-      const authResp=await axios.post("http://localhost:8080/api/auth/login",{email:auth.email,password:auth.password});
+      const authResp=await axios.post(`${url}/api/auth/login`,{email:auth.email,password:auth.password});
       console.log(authResp.data);
       if(authResp){
         toast.success("Welcome to dashboard");

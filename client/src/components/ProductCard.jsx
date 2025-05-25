@@ -7,13 +7,14 @@ import { contextProvider } from "../context/AppContext";
 
 const ProductCard = ({ product, onDelete }) => {
   const { user, Productfetch } = useContext(contextProvider);
+  const url = import.meta.env?.VITE_BACKEND_URL
 
   const handleDelete = async () => {
     const confirm = window.confirm("Are you sure you want to delete this product?");
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:8080/api/product/${product._id}`);
+      await axios.delete(`${url}/api/product/${product._id}`);
       toast.success("Product deleted successfully.");
       if (onDelete) onDelete(product._id);
       Productfetch(); // Refresh product list

@@ -17,7 +17,7 @@ const Signup = () => {
     e.preventDefault();
     console.log(auth);
     try {
-      const authResp=await axios.post("http://localhost:8080/api/auth/register",{email:auth.email,password:auth.password});
+      const authResp=await axios.post(`${url}/api/auth/register`,{email:auth.email,password:auth.password});
       console.log(authResp.data);
       if(authResp){
         toast.success("Welcome to dashboard");
