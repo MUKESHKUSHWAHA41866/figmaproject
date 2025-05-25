@@ -12,6 +12,10 @@ connectDB();
 app.use(express.json());
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Ecommerse website 🚀');
+});
+
 app.use('/api/service',servicesRouter);
 app.use('/api/product',productRouter);
 app.use('/api/auth',userRouter);
